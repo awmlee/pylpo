@@ -14,19 +14,20 @@ Windows only -- uses the windows WMI service to periodically poll battery and po
 
 Dependencies:
 
-pystray: 	for the system tray icon
-PIL:		for the icon
+pystray: 	for the system tray icon  
+PIL:		for the icon  
 wmi:		windows management interface, python implementation.  
 pythoncom:	used to interface wmi 
 
+
 Install:
 
-pip install systray
-pip install wmi
-pip install pythoncom
+pip install systray  
+pip install wmi  
+pip install pythoncom  
 
 
-python pilpo
+python pilpo.py
 
-To Do:
+To Do:  
 Remove pythoncom
