@@ -11,6 +11,7 @@ Supported systems:
 
 Windows only -- uses the windows WMI service to periodically poll battery and power stats from the system.  Works on my HP envy laptop (2017).
 
+
 Dependencies:
 
 pystray: 	for the system tray icon
