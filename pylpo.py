@@ -2,17 +2,20 @@
 """
 Created on Thu Apr 16 10:24:20 2020
 
-@author: default_user
+@author: 
+Alan Lee
+@Warranty:
+Absolutely none, expressed or implied.
+@Copyright:
+Public domain
 """
 
-import pystray
+import pystray                              
 from PIL import Image, ImageDraw, ImageFont
 import time
 import sys
 import wmi
 import pythoncom
-
-sys.path=['.', 'C:\\ProgramData\\Anaconda3\\python37.zip', 'C:\\ProgramData\\Anaconda3\\DLLs', 'C:\\ProgramData\\Anaconda3\\lib', 'C:\\ProgramData\\Anaconda3', 'C:\\ProgramData\\Anaconda3\\lib\\site-packages', 'C:\\ProgramData\\Anaconda3\\lib\\site-packages\\win32', 'C:\\ProgramData\\Anaconda3\\lib\\site-packages\\win32\\lib', 'C:\\ProgramData\\Anaconda3\\lib\\site-packages\\Pythonwin']
 
 
 oldcapacity=0
@@ -22,16 +25,17 @@ def getbatt(c,t):
     temp=0
     discharge=0
     hoursleft=0
-    #batts = t.ExecQuery('Select * from BatteryStatus ')
+    #works on HP envy laptop:
     batts = t.ExecQuery('Select * from BatteryStatus where Voltage > 0')
+    #Different brands might require this:
+    #batts = t.ExecQuery('Select * from BatteryStatus ')
+    
     for i, b in enumerate(batts):
-        temp=b.DischargeRate/1000.0
+        watts=b.DischargeRate/1000.0
         #print ('DischargeRate:     ' + str(b.DischargeRate)
         capacity+=b.RemainingCapacity
-    discharge=temp
     #discharge=(oldcapacity-capacity)
     oldcapacity=capacity
-    watts=(discharge)
     watthours=(capacity/1000.0)
     if discharge != 0:
         hoursleft=(capacity/discharge/1000)    
@@ -40,8 +44,6 @@ def getbatt(c,t):
 
 def callback(icon):
     image = Image.new('RGB', (128,128), (255,255,255)) # create new image
-    percent = 100
-    i=0
     pythoncom.CoInitialize()
     c = wmi.WMI()
     t = wmi.WMI(moniker = "//./root/wmi")
