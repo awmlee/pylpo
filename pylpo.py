@@ -16,40 +16,37 @@ import wmi
 import pythoncom
 
 
-oldcapacity=0
 def getbatt(c,t):
-    global oldcapacity
-    capacity = 0
-    temp=0
-    discharge=0
-    hoursleft=0
+    watthours=0
+    watts=0
     #works on HP envy laptop:
     batts = t.ExecQuery('Select * from BatteryStatus where Voltage > 0')
+    #more information available here, but not used:
+    batts1 = c.CIM_Battery(Caption = 'Portable Battery')
+    
     #Different brands might require this:
     #batts = t.ExecQuery('Select * from BatteryStatus ')
     
     for i, b in enumerate(batts):
         watts=b.DischargeRate/1000.0
         #print ('DischargeRate:     ' + str(b.DischargeRate)
-        capacity+=b.RemainingCapacity
+        watthours=b.RemainingCapacity/1000
     #discharge=(oldcapacity-capacity)
-    oldcapacity=capacity
-    watthours=(capacity/1000.0)
-    if discharge != 0:
-        hoursleft=(capacity/discharge/1000)    
-    batts1 = c.CIM_Battery(Caption = 'Portable Battery')
-    return watts,watthours,hoursleft
+    return watts,watthours
 
 def callback(icon):
     image = Image.new('RGB', (128,128), (255,255,255)) # create new image
-    pythoncom.CoInitialize()
+    pythoncom.CoInitialize()  #access libraries from a thread
     c = wmi.WMI()
     t = wmi.WMI(moniker = "//./root/wmi")
     watts=0
     watthours=0
     hoursleft=0
     while True:
-        watts,watthours,hoursleft = getbatt(c,t)
+        watts,watthours = getbatt(c,t)
+        if watts != 0:     #discharging
+            hoursleft=(watthours/watts)
+
         img = image.copy()
         dc = ImageDraw.Draw(img)
         #dc.rectangle([0, 128, 128, 128-(percent * 128) / 100], fill='blue')

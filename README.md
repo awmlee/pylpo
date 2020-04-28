@@ -34,7 +34,8 @@ pip install wmi
 pip install pythoncom  
 ```
   
-run:
+## run:
+  
 ```
 python pylpo.py
 ```
@@ -46,7 +47,9 @@ To figure out what resources you need from WMI I used [WMI Explorer](https://dev
   
 ## To Do:  
   
-Remove pythoncom, it really shouldn't be necessary.
+Remove pythoncom, it really shouldn't be necessary.  
+Compile into small executable.  
+Clean up code
 
 ## Who:
   
