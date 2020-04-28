@@ -38,13 +38,12 @@ python pylpo.py
   
 ## References:
   
-Implementation follows:  
 The WMI Module is really the key here. [WMI](https://pypi.org/project/WMI/)  
 To figure out what resources you need from WMI I used [WMI Explorer](https://devblogs.microsoft.com/scripting/weekend-scripter-the-wmi-explorer-tool/)
   
 ## To Do:  
   
-Remove pythoncom
+Remove pythoncom, it really shouldn't be necessary.
 
 ## Who:
   
