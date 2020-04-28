@@ -6,8 +6,6 @@ Created on Thu Apr 16 10:24:20 2020
 Alan Lee
 @Warranty:
 Absolutely none, expressed or implied.
-@Copyright:
-Public domain
 """
 
 import pystray                              
