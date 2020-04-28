@@ -33,7 +33,7 @@ pip install pythoncom
   
 run:
 ```
-python pilpo.py
+python pylpo.py
 ```
   
 ## References:
