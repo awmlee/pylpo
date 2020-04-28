@@ -11,14 +11,14 @@ You can also compare your results with notebookcheck.com's results for the same 
 
 ## Supported systems:
 
-Windows only -- uses the windows WMI service to periodically poll battery and power stats from the system.  Works on my HP envy laptop (2017).
+Windows only -- uses the windows WMI service to periodically poll battery and power stats from the system.  Works on HP envy laptop (2017).  May require tweaking with other windows laptops.  Tweaking is easy with the WMI explorer tool (see references below).
   
   
 ## Dependencies:
 
 ```
-pystray: 	for the system tray icon  
-PIL:		for the icon  
+pystray: 	module for handling the display of the system tray icon  
+PIL:		drawing module to produce the actual icon 
 wmi:		windows management interface, python implementation.  
 pythoncom:	used to interface wmi 
 ```  
