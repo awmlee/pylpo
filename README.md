@@ -1,10 +1,13 @@
 # PYLPO (Python Laptop Power)
 
 ## What:
-Pylpo (Python Laptop Power) Creates a Windows systray icon that displays instantaneous power consumption (in watts) of a laptop running on battery.  Also shows battery charge (in watt*hours) and estimated battery life.  Pylpo digs through WMI  to get more power details than are typically available.  WMI access is made availble by the excellent python module wmi (see references).
+  
+Did you know that windows has more information on your laptop power consumption and battery state than windows typically reports?
+  
+Pylpo (Python Laptop Power) Creates a Windows systray icon that displays instantaneous power consumption (in watts) of a laptop running on battery.  It also shows battery charge (in watt*hours) and estimated battery life.  Pylpo digs through WMI  to get more power details than are typically available.  WMI access is made availble by the excellent python module wmi (see references).
 
 ## Why:
-To maximize battery life on long trips, displaying the instantaneous power is useful.  You can immediatly see the effect of dimming your screen, and switching the cpu to low power mode.  You can also see more subtle effects like disabling software, the touchscreen, USB controllers, Network controllers or integrated GPU.  (Disabling the integrated GPU actually increases the power consumption, because GPU doesn't actually power down).
+To maximize battery life on long trips, displaying the instantaneous power is a useful optimization tool.  You can immediatly see the effect of dimming your screen, and switching the cpu to low power mode.  You can also see more subtle effects like disabling software, the touchscreen, USB controllers, Network controllers or integrated GPU.  (For me, disabling the integrated GPU in windows actually increases the power consumption, because GPU chip doesn't actually power down).
 
 You can also compare your results with notebookcheck.com's results for the same laptop.  
 
